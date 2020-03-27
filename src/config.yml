@@ -1,0 +1,118 @@
+# ****************************************************************************** #
+#                                UltimateCommands                                #
+# ****************************************************************************** #
+
+#    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\  #
+#  / /=======================================================================\ \ #
+# | |                                 NOTES:                                 | | #
+# \ \                                                                        \ \ #
+# | | To ensure that the plugin runs like usual please follow the rules:     | | #
+# \ \  - Save file as UTF-8                                                  \ \ #
+# | |  - Indents correct                                                     | | #
+# \ \  - Symbol in text? --> enclosed in single our double quotes            \ \ #
+# | |  - If you want to write ' or " double type them. (I'm --> I''m)        | | #
+# \ \  - Spaces in place of tabs.                                            \ \ #
+# | |                                                                        | | #
+# \ \=======================================================================/ /  #
+#  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/  #
+
+# ------------------------------------------------------------------------------ #
+# This is the prefix that will be send before every message.                     #
+# Feel free to customize this to your will!                                      #
+# ------------------------------------------------------------------------------ #
+prefix: '&7[&e&lU&6&lC&7] &r'
+
+# ------------------------------------------------------------------------------ #
+# These are the two states that will be used when an action has been turned on   #
+# or off. If you want to keep everything organised keep the '&r' at the end of   #
+# the string!                                                                    #
+# ------------------------------------------------------------------------------ #
+states:
+  enabled: '&aenabled&r'
+  disabled: '&4disabled&r'
+
+# ------------------------------------------------------------------------------ #
+# Not available yet.                                                             #
+# ------------------------------------------------------------------------------ #
+# Auto broadcasting:
+autobroadcast:
+  enabled: false
+  # Every how many ticks
+  # There are 20 ticks per second in minecraft.
+  time: 60
+  messages:
+    - '1':
+        message:
+          - '--------------------'
+          - ''
+          - 'This server runs on'
+          - '&e&lUltimate&6&lCommands'
+          - ''
+          - '--------------------'
+
+# Customize commands:
+commands:
+  # ------------------------------------------------------------------------------ #
+  # Allow a user to fly without gamemode.                                          #
+  # Permissions:                                                                   #
+  #   Self - Allow a user to change their flight state.                            #
+  #   Others - Allow a user to change other people their flight state.             #
+  # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+  # Messages:                                                                      #
+  #   message - The message that is send when executed successfully.               #
+  #   targetmsg - The message that is send to the receiver. (target)               #
+  # ------------------------------------------------------------------------------ #
+  fly:
+    enabled: true
+    message: 'Successfully {state} fly for &e{player.display_name}&r!'
+    targetmsg: 'Your flight got {state} by {author}!'
+    permissions:
+      self: UC.fly
+      others: UC.fly.others
+  # ------------------------------------------------------------------------------ #
+  # Change a user their gamemode!                                                  #
+  # Permissions:                                                                   #
+  #   Self - Allow a user to change their own gamemode. (Specific)                 #
+  #   Others - Allow a user to change other people their gamemode. (Specific)      #
+  # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+  # Messages:                                                                      #
+  #   message - The message that is send when executed successfully.               #
+  #   already - The message that is send if the user is already in that gamemode.  #
+  #   targetmsg - The message that is send to the receiver. (target)               #
+  # ------------------------------------------------------------------------------ #
+  gamemode:
+    enabled: true
+    message: 'Successfully changed &e{player.display_name}&r their gamemode from {gamemode.last} to {gamemode.now}!'
+    already: 'Oh, &e{player.display_name}&r is already in {gamemode.last}!'
+    targetmsg: 'Your gamemode has been updated from {gamemode.last} to {gamemode.now} by &e{author}&r!'
+    survival:
+      call: '&2survival&r'
+      permissions:
+        self: UC.gamemode.survival
+        others: UC.gamemode.survival.others
+    creative:
+      call: '&dcreative&r'
+      permissions:
+        self: UC.gamemode.creative
+        others: UC.gamemode.creative.others
+    adventure:
+      call: '&eadventure&r'
+      permissions:
+        self: UC.gamemode.adventure
+        pthers: UC.gamemode.adventure.others
+    spectator:
+      call: '&cspectator&r'
+      permissions:
+        self: UC.gamemode.spectator
+        others: UC.gamemode.spectator.others
+
+# ------------------------------------------------------------------------------ #
+# No category specific messages:                                                 #
+#   unknownPlayer - Requested player is not online or doesn't exist.             #
+#   noPerms - The requester doesn't have enough permission to execute this cmd.  #
+#   unableToExecute - The requester can't execute this command. (EG console)     #
+# ------------------------------------------------------------------------------ #
+messages:
+  unknownPlayer: '&4I could not find an online player called &7''&e{arg}&7''&4!'
+  noPerms: '&4You do &lNOT&4 have enough permissions to execute this command!'
+  unableToExecute: '&cYou are unable to execute this command!'

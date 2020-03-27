@@ -1,0 +1,21 @@
+name: UltimateCommands
+version: 0.0.3
+author: Arthurdw
+main: net.xiler.mc.UltimateCommands.Main
+description: The all in one minecraft command plugin!
+
+commands:
+  fly:
+    description: Enable/Disable flight!
+  survival:
+    aliases: [gms]
+    description: Change your gamemode to survival!
+  adventure:
+    aliases: [gma]
+    description: Change your gamemode to adventure!
+  creative:
+    aliases: [gmc]
+    description: Change your gamemode to creative!
+  spectator:
+    aliases: [gmsp]
+    description: Change your gamemode to spectator!
