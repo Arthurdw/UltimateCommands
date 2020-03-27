@@ -2,7 +2,7 @@ name: UltimateCommands
 version: 0.0.3
 author: Arthurdw
 main: net.xiler.mc.UltimateCommands.Main
-description: The all in one minecraft command plugin!
+description: The all in one command plugin aimed for controllability.
 
 commands:
   fly:

@@ -143,7 +143,7 @@ public class Chat {
             };
             for (String[] item : replacements) current = current.replace(item[0], item[1]);
         }
-        return ChatColor.translateAlternateColorCodes('&',pl.getConfig().getString("prefix")) + current;
+        return ChatColor.translateAlternateColorCodes('&', pl.getConfig().getString("prefix")) + current;
     }
 
     public static String center(Player player, String message){

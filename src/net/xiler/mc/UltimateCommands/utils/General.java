@@ -21,15 +21,15 @@ public class General {
             }
             return p;
         }
-        if (args.length != 0) {
+        if (args.length == 0 || args == null) {
+            sender.sendMessage(Chat.send(plugin, null, "&4You need to provide a user on who you want to perform that action!"));
+            return null;
+        } else  {
             if (Bukkit.getPlayer(args[0]) != null) return Bukkit.getPlayer(args[0]);
             else {
                 sender.sendMessage(Chat.send(plugin, null, "messages.unknownPlayer").replace("{arg}", args[0]));
                 return null;
             }
-        } else {
-            sender.sendMessage(Chat.send(plugin, null, "&4You need to provide a user on who you want to perform that action!"));
-            return null;
         }
     }
 }
