@@ -138,4 +138,4 @@ messages:
   unknownPlayer: '&4I could not find an online player called &7''&e{arg}&7''&4!'
   noPerms: '&4You do &lNOT&4 have enough permissions to execute this command!'
   unableToExecute: '&cYou are unable to execute this command!'
-  missingParam: '&4Missing required parameter(s)!\nSee &7''&6/uc&7''&4!'
+  missingParam: '&4Missing required parameter(s)!'
