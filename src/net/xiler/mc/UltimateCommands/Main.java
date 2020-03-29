@@ -1,18 +1,24 @@
 package net.xiler.mc.UltimateCommands;
 
 import net.xiler.mc.UltimateCommands.commands.*;
+import net.xiler.mc.UltimateCommands.loops.AutoBroadcaster;
 import net.xiler.mc.UltimateCommands.misc.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
+import java.util.Timer;
 
 public class Main extends JavaPlugin {
 
+    String[] colors = {"\u001B[0m", "\u001B[32m", "\u001B[31m"};
+
+    Timer broadcaster = new Timer();
+
     @Override
     public void onEnable() {
+        getLogger().info(colors[1] + "Starting ..." + colors[0]);
         saveDefaultConfig();
         new UCHelp(this);
         new FlyCommand(this);
@@ -20,7 +26,7 @@ public class Main extends JavaPlugin {
         new GamemodeAdventure(this);
         new GamemodeCreative(this);
         new GamemodeSpectator(this);
-        // new AutoBroadcasting(this);
+        new BroadcastCommand(this);
 
         int pluginId = 6911;
         Metrics metrics = new Metrics(this, pluginId);
@@ -46,5 +52,21 @@ public class Main extends JavaPlugin {
             }
             return map;
         }));
+
+
+        if (getConfig().getBoolean("autobroadcaster.enabled")) {
+            AutoBroadcaster broadcast = new AutoBroadcaster(this);
+            broadcaster.schedule(broadcast, 0, getConfig().getInt("autobroadcaster.time")*1000);
+        }
+
+        getLogger().info(colors[1] + "Started!" + colors[0]);
+    }
+
+
+    @Override
+    public void onDisable() {
+        getLogger().info(colors[2] + "Disabling..." + colors[0]);
+        broadcaster.cancel();
+        getLogger().info(colors[2] + "Disabled!" + colors[0]);
     }
 }

@@ -13,6 +13,10 @@
 # | |  - If you want to write ' or " double type them. (I'm --> I''m)        | | #
 # \ \  - Spaces in place of tabs.                                            \ \ #
 # | |                                                                        | | #
+# \ \ A '#' means that its commented, removing the '#' will let UC detect    \ \ #
+# | | it, only remove it when '# example' stands above it or if you know     | | #
+# \ \ what you're doing!                                                     \ \ #
+# | |                                                                        | | #
 # \ \=======================================================================/ /  #
 #  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/  #
 
@@ -32,23 +36,34 @@ states:
   disabled: '&4disabled&r'
 
 # ------------------------------------------------------------------------------ #
-# Not available yet.                                                             #
+# Automatically broadcast a message to everyone every x seconds.                 #
+# enabled - Should it broadcast?                                                 #
+# time - The cycle time in seconds, eg: msg 1 --> 30 seconds --> msg 2           #
+# messages - a list of messages, feel free to add some.                          #
 # ------------------------------------------------------------------------------ #
-# Auto broadcasting:
-autobroadcast:
-  enabled: false
-  # Every how many ticks
-  # There are 20 ticks per second in minecraft.
+autobroadcaster:
+  enabled: true
   time: 60
   messages:
-    - '1':
-        message:
-          - '--------------------'
-          - ''
-          - 'This server runs on'
-          - '&e&lUltimate&6&lCommands'
-          - ''
-          - '--------------------'
+    1:
+      message:
+        - '--------------------'
+        - ''
+        - 'This server runs on'
+        - '&e&lUltimate&6&lCommands'
+        - ''
+        - '--------------------'
+    2:
+      message:
+        - '--------------------'
+        - ''
+        - '&cCustomize this in the &econfig&c!'
+        - ''
+        - '--------------------'
+   # example:
+   # 3:
+   #  message:
+   #    - 'My cool message!'
 
 # ------------------------------------------------------------------------------ #
 # Customize ALL your commands to perfection!                                     #
@@ -90,6 +105,15 @@ commands:
     permissions:
       self: UC.fly
       others: UC.fly.others
+  # ------------------------------------------------------------------------------ #
+  # Broadcast a message to your whole server!                                      #
+  # prefix - The prefix of the broadcast message.                                  #
+  # permission - The permission required for a member to be able to use broadcast. #
+  # ------------------------------------------------------------------------------ #
+  broadcast:
+    enabled: true
+    prefix: '&7[&4ALERT&7] &r'
+    permission: UC.broadcast
   # ------------------------------------------------------------------------------ #
   # Change a user their gamemode!                                                  #
   # Permissions:                                                                   #

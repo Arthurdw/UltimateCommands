@@ -29,3 +29,9 @@ commands:
   spectator:
     aliases: [gmsp]
     description: Change your gamemode to spectator!
+  broadcast:
+    aliases:
+      - bc
+      - alert
+      - announce
+    description: Broadcast a message to your whole server!
