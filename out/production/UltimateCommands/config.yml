@@ -83,6 +83,7 @@ commands:
     messages:
       - '&e&lU&eltimate &6&lC&6ommands&7 - &cHELP'
       - '&7This help menu will give a brief summary of all commands included!'
+      - '&abc &7(&cmessage&7) &2- &rBroadcast a message to your whole server!'
       - '&afly &7[&emember&7] &2- &rToggles fly for yourself or another member!'
       - '&agms &7[&emember&7] &2- &rPut yourself or another member in survival!'
       - '&agmc &7[&emember&7] &2- &rPut yourself or another member in creative!'
