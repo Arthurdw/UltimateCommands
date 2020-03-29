@@ -21,8 +21,8 @@ public class General {
             }
             return p;
         }
-        if (args.length == 0 || args == null) {
-            sender.sendMessage(Chat.send(plugin, null, "&4You need to provide a user on who you want to perform that action!"));
+        if (args == null || args.length == 0) {
+            sender.sendMessage(Chat.send(plugin, null, "messages.missingParam"));
             return null;
         } else  {
             if (Bukkit.getPlayer(args[0]) != null) return Bukkit.getPlayer(args[0]);

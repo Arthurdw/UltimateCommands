@@ -8,6 +8,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        new UCHelp(this);
         new FlyCommand(this);
         new GamemodeSurvival(this);
         new GamemodeAdventure(this);

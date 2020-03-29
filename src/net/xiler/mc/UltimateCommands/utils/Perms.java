@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 public class Perms {
 
     public static Boolean contains(Plugin pl, Player p, String perm) {
+        if (pl.getConfig().getString(perm).toLowerCase().equals("default")) return true;
         if (p.hasPermission(pl.getConfig().getString(perm))) return true;
         else p.sendMessage(Chat.send(pl, p, "messages.noPerms"));
         return false;

@@ -50,8 +50,29 @@ autobroadcast:
           - ''
           - '--------------------'
 
-# Customize commands:
+# ------------------------------------------------------------------------------ #
+# Customize ALL your commands to perfection!                                     #
+# Permission info:                                                               #
+#   default - This allows all members to use that command.                       #
+# ------------------------------------------------------------------------------ #
 commands:
+  # ------------------------------------------------------------------------------ #
+  # The help menu of UltimateCommands!                                             #
+  # permission - Allow only users with this permission to access the help menu!    #
+  # messages - All the messages that will be sent to a user when the command has   #
+  # been executed!                                                                 #
+  # ------------------------------------------------------------------------------ #
+  help:
+    enabled: true
+    permission: default
+    messages:
+      - '&e&lU&eltimate &6&lC&6ommands&7 - &cHELP'
+      - '&7This help menu will give a brief summary of all commands included!'
+      - '&afly &7[&emember&7] &2- &rToggles fly for yourself or another member!'
+      - '&agms &7[&emember&7] &2- &rPut yourself or another member in survival!'
+      - '&agmc &7[&emember&7] &2- &rPut yourself or another member in creative!'
+      - '&agma &7[&emember&7] &2- &rPut yourself or another member in adventure!'
+      - '&agmsp &7[&emember&7] &2- &rPut yourself or another member in spectator!'
   # ------------------------------------------------------------------------------ #
   # Allow a user to fly without gamemode.                                          #
   # Permissions:                                                                   #
@@ -111,8 +132,10 @@ commands:
 #   unknownPlayer - Requested player is not online or doesn't exist.             #
 #   noPerms - The requester doesn't have enough permission to execute this cmd.  #
 #   unableToExecute - The requester can't execute this command. (EG console)     #
+#   missingParam - The action requires an extra parameter that wasn't given.     #
 # ------------------------------------------------------------------------------ #
 messages:
   unknownPlayer: '&4I could not find an online player called &7''&e{arg}&7''&4!'
   noPerms: '&4You do &lNOT&4 have enough permissions to execute this command!'
   unableToExecute: '&cYou are unable to execute this command!'
+  missingParam: '&4Missing required parameter(s)!\nSee &7''&6/uc&7''&4!'

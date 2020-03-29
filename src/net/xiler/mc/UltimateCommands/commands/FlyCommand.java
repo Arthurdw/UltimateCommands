@@ -13,8 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.io.Console;
-
 public class FlyCommand implements CommandExecutor {
 
     private final Main plugin;
@@ -26,7 +24,7 @@ public class FlyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (plugin.getConfig().getString("commands.fly.enabled") != "true") return true;
+        if (!plugin.getConfig().getBoolean("commands.fly.enabled")) return true;
 
         Player p = General.getPlayer(sender, plugin, "commands.fly.permissions.others", args);
         if (p == null) return true;

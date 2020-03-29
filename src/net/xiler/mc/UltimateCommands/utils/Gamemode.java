@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class Gamemode {
 
     public static boolean change(Plugin plugin, CommandSender sender, String[] args, GameMode mode) {
-        if (plugin.getConfig().getString("commands.gamemode.enabled") != "true") return true;
+        if (!plugin.getConfig().getBoolean("commands.gamemode.enabled")) return true;
 
         Player p = General.getPlayer(sender, plugin, "commands.gamemode." + mode.name().toLowerCase() + ".permissions.others", args);
         if (p == null) return true;
