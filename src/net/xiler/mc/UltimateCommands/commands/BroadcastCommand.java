@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -26,7 +27,8 @@ public class BroadcastCommand implements CommandExecutor {
             if (Perms.contains(plugin, (Player) sender, "commands.broadcast.permission")) return broadcast(plugin, sender, args);
             else return true;
         }
-        else return broadcast(plugin, sender, args);
+        else if (sender instanceof ConsoleCommandSender) return broadcast(plugin, sender, args);
+        else return true;
     }
 
     private static boolean broadcast(Plugin plugin, CommandSender sender, String[] args) {

@@ -3,6 +3,7 @@ package net.xiler.mc.UltimateCommands.utils;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -14,7 +15,7 @@ public class Gamemode {
         Player p = General.getPlayer(sender, plugin, "commands.gamemode." + mode.name().toLowerCase() + ".permissions.others", args);
         if (p == null) return true;
 
-        if (!(sender instanceof Player)) {
+        if (sender instanceof ConsoleCommandSender) {
             Gamemode.set(p, mode, sender, plugin);
             return false;
         }

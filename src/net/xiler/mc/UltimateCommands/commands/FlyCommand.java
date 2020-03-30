@@ -3,13 +3,13 @@ package net.xiler.mc.UltimateCommands.commands;
 
 import net.xiler.mc.UltimateCommands.Main;
 import net.xiler.mc.UltimateCommands.utils.Chat;
-import net.xiler.mc.UltimateCommands.utils.Gamemode;
 import net.xiler.mc.UltimateCommands.utils.General;
 import net.xiler.mc.UltimateCommands.utils.Perms;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -29,7 +29,7 @@ public class FlyCommand implements CommandExecutor {
         Player p = General.getPlayer(sender, plugin, "commands.fly.permissions.others", args);
         if (p == null) return true;
 
-        if (!(sender instanceof Player)) {
+        if (sender instanceof ConsoleCommandSender) {
             fly(p, sender, plugin);
             return false;
         }

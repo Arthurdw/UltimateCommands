@@ -151,6 +151,19 @@ commands:
       permissions:
         self: UC.gamemode.spectator
         others: UC.gamemode.spectator.others
+  # ------------------------------------------------------------------------------ #
+  # Staff-chat & Admin chat.                                                       #
+  #   prefix - what stands before the private message.                             #
+  #   permission - the permission required to send and see the private chat.       #
+  # ------------------------------------------------------------------------------ #
+  staffchat:
+    enabled: true
+    prefix: '&7[&4Staff&7] &r'
+    permission: UC.staff.chat
+  adminchat:
+    enabled: true
+    prefix: '&7[&cAdmin&7] &r'
+    permission: UC.admin.chat
 
 # ------------------------------------------------------------------------------ #
 # No category specific messages:                                                 #

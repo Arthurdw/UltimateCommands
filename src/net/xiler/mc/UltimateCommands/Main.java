@@ -27,6 +27,8 @@ public class Main extends JavaPlugin {
         new GamemodeCreative(this);
         new GamemodeSpectator(this);
         new BroadcastCommand(this);
+        new StaffChat(this);
+        new AdminChat(this);
 
         int pluginId = 6911;
         Metrics metrics = new Metrics(this, pluginId);

@@ -1,5 +1,5 @@
 name: UltimateCommands
-version: 0.0.51
+version: 0.0.6
 author: Arthurdw
 main: net.xiler.mc.UltimateCommands.Main
 description: The all in one command plugin aimed for controllability.
@@ -15,6 +15,18 @@ commands:
       - ucomm
       - ucommands
     description: Returns the help menu!
+  sc:
+    aliases:
+      - staff
+      - staffc
+      - staffchat
+    description: The staffchat!
+  ac:
+    aliases:
+      - admin
+      - adminc
+      - adminchat
+    description: The adminchat!
   fly:
     description: Enable/Disable flight!
   survival:

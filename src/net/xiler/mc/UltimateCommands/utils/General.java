@@ -1,6 +1,7 @@
 package net.xiler.mc.UltimateCommands.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -32,4 +33,14 @@ public class General {
             }
         }
     }
+
+    public static boolean privateBroadcast(CommandSender sender, Plugin plugin, String prefix,  String perm, String[] args) {
+        if (args == null || args.length == 0) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("prefix") + plugin.getConfig().getString("messages.missingParam")));
+            return true;
+        }
+        Bukkit.broadcast(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(prefix) + sender.getName() + ": " + String.join(" ", args)), plugin.getConfig().getString(perm));
+        return false;
+    }
+
 }
