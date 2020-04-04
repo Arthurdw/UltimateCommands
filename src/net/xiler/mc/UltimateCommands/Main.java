@@ -1,14 +1,21 @@
 package net.xiler.mc.UltimateCommands;
 
-import net.xiler.mc.UltimateCommands.commands.*;
-import net.xiler.mc.UltimateCommands.loops.AutoBroadcaster;
-import net.xiler.mc.UltimateCommands.misc.Metrics;
+import net.xiler.mc.UltimateCommands.utils.Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import net.xiler.mc.UltimateCommands.misc.*;
+import net.xiler.mc.UltimateCommands.loops.*;
+import net.xiler.mc.UltimateCommands.commands.*;
+import net.xiler.mc.UltimateCommands.listeners.*;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.InvalidConfigurationException;
 
-import java.util.HashMap;
+import java.io.File;
 import java.util.Map;
 import java.util.Timer;
+import java.util.HashMap;
+import java.io.IOException;
 
 public class Main extends JavaPlugin {
 
@@ -16,19 +23,31 @@ public class Main extends JavaPlugin {
 
     Timer broadcaster = new Timer();
 
+    private File configFile = createCustomConfigFile("config.yml");
+    private File tagsFile = createCustomConfigFile("tags.yml");
+    private File playersFile = createCustomConfigFile("players.yml");
+    public FileConfiguration config = createCustomConfig(configFile);
+    public FileConfiguration tagsCFG = createCustomConfig(tagsFile);
+    public FileConfiguration playersCFG = createCustomConfig(playersFile);
+
     @Override
     public void onEnable() {
         getLogger().info(colors[1] + "Starting ..." + colors[0]);
-        saveDefaultConfig();
         new UCHelp(this);
+        new chatFix(this);
+        new AdminChat(this);
+        new StaffChat(this);
         new FlyCommand(this);
+        new InvClickCheck(this);
+        new BroadcastCommand(this);
+        new GamemodeCreative(this);
         new GamemodeSurvival(this);
         new GamemodeAdventure(this);
-        new GamemodeCreative(this);
         new GamemodeSpectator(this);
-        new BroadcastCommand(this);
-        new StaffChat(this);
-        new AdminChat(this);
+        if (tagsCFG.getBoolean("enabled")) {
+            new TagsCommand(this);
+            Gui.init(tagsCFG.getString("title"), tagsCFG.getInt("rows"));
+        }
 
         int pluginId = 6911;
         Metrics metrics = new Metrics(this, pluginId);
@@ -60,7 +79,6 @@ public class Main extends JavaPlugin {
             AutoBroadcaster broadcast = new AutoBroadcaster(this);
             broadcaster.schedule(broadcast, 0, getConfig().getInt("autobroadcaster.time")*1000);
         }
-
         getLogger().info(colors[1] + "Started!" + colors[0]);
     }
 
@@ -70,5 +88,28 @@ public class Main extends JavaPlugin {
         getLogger().info(colors[2] + "Disabling..." + colors[0]);
         broadcaster.cancel();
         getLogger().info(colors[2] + "Disabled!" + colors[0]);
+    }
+
+    private File createCustomConfigFile(String file) {
+        File cfg = new File(getDataFolder(), file);
+        if (!cfg.exists()) {
+            cfg.getParentFile().mkdirs();
+            saveResource(file, false);
+        }
+        return cfg;
+    }
+
+    private FileConfiguration createCustomConfig(File file) {
+        FileConfiguration cfg = new YamlConfiguration();
+        try {
+            cfg.load(file);
+        } catch (IOException | InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        return cfg;
+    }
+
+    public FileConfiguration getConfig() {
+        return this.config;
     }
 }

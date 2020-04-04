@@ -158,7 +158,7 @@ public class Chat {
             if(c == '§'){
                 previousCode = true;
                 continue;
-            }else if(previousCode == true){
+            }else if(previousCode){
                 previousCode = false;
                 if(c == 'l' || c == 'L'){
                     isBold = true;
@@ -181,5 +181,9 @@ public class Chat {
             compensated += spaceLength;
         }
         return message;
+    }
+
+    public static String e(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
     }
 }

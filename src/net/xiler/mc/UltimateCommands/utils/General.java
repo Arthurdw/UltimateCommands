@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import java.util.ArrayList;
+
 public class General {
 
     public static Player getPlayer(CommandSender sender, Plugin plugin, String perm, String[] args) {
@@ -43,4 +45,15 @@ public class General {
         return false;
     }
 
+    public static String[] arrayListToStringList(ArrayList in) {
+        String[] returnValue = new String[in.size()];
+        for (int i = 0; i < in.size(); i++) returnValue[i] = (String) in.get(i);
+        return returnValue;
+    }
+
+    public static String[][][] treeDimensionArrayListToStringList(ArrayList in) {
+        String[][][] returnValue = new String[in.size()][][];
+        for (int i = 0; i < in.size(); i++) returnValue[i] = ((String[][]) in.get(i));
+        return returnValue;
+    }
 }

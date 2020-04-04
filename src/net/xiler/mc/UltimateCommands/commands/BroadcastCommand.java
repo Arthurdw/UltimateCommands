@@ -10,7 +10,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class BroadcastCommand implements CommandExecutor {
 
@@ -24,19 +23,19 @@ public class BroadcastCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
-            if (Perms.contains(plugin, (Player) sender, "commands.broadcast.permission")) return broadcast(plugin, sender, args);
+            if (Perms.contains(plugin, (Player) sender, "commands.broadcast.permission")) return broadcast(sender, args);
             else return true;
         }
-        else if (sender instanceof ConsoleCommandSender) return broadcast(plugin, sender, args);
+        else if (sender instanceof ConsoleCommandSender) return broadcast(sender, args);
         else return true;
     }
 
-    private static boolean broadcast(Plugin plugin, CommandSender sender, String[] args) {
+    private boolean broadcast(CommandSender sender, String[] args) {
         if (args == null || args.length == 0) {
-            sender.sendMessage(Chat.send(plugin, null, "messages.missingParam"));
+            sender.sendMessage(Chat.send(this.plugin, null, "messages.missingParam"));
             return true;
         }
-        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("commands.broadcast.prefix")) + ChatColor.translateAlternateColorCodes('&', String.join(" ", args)));
+        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', this.plugin.config.getString("commands.broadcast.prefix")) + ChatColor.translateAlternateColorCodes('&', String.join(" ", args)));
         return false;
     }
 }

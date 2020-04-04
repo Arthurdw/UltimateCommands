@@ -1,0 +1,134 @@
+##################################################################################
+#################################### WARNING: ####################################
+# THE WHOLE TAGS PLUGIN IS WIP, ANY TAGS THAT HAVE BEEN APPLIED WILL BE REMOVED- #
+# ON REJOIN! YOU WILL BE ABLE TO REAPPLY THESE TAGS THO!                         #
+##################################################################################
+
+
+# ****************************************************************************** #
+#                                UltimateCommands                                #
+# ****************************************************************************** #
+
+#    /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\  #
+#  / /=======================================================================\ \ #
+# | |                                 NOTES:                                 | | #
+# \ \                                                                        \ \ #
+# | | To ensure that the plugin runs like usual please follow the rules:     | | #
+# \ \  - Save file as UTF-8                                                  \ \ #
+# | |  - Indents correct                                                     | | #
+# \ \  - Symbol in text? --> enclosed in single our double quotes            \ \ #
+# | |  - If you want to write ' or " double type them. (I'm --> I''m)        | | #
+# \ \  - Spaces in place of tabs.                                            \ \ #
+# | |                                                                        | | #
+# \ \ A '#' means that its commented, removing the '#' will let UC detect    \ \ #
+# | | it, only remove it when '# example' stands above it or if you know     | | #
+# \ \ what you're doing!                                                     \ \ #
+# | |                                                                        | | #
+# \ \=======================================================================/ /  #
+#  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/    #
+
+# ------------------------------------------------------------------------------ #
+# The general settings:                                                          #
+#   title - The title that will be in the inv. (max 32 chars)                    #
+#   rows - How big do you want the inventory to be?                              #
+#   setup - The tag implementation.                                              #
+#   enabled - If the tag plugin should be enabled.                               #
+# ------------------------------------------------------------------------------ #
+title: '&e&lU&6&lC&7 - &d&lTags'
+rows: 2
+setup: '&7[{tag}&7] &r'
+enabled: true
+
+
+# ------------------------------------------------------------------------------ #
+# This section covers all tag related messages.                                  #
+#   reset - The message that is sent when a player resets its tag.               #
+#   applied - The messages that will be sent when a member applied a tag.        #
+# ------------------------------------------------------------------------------ #
+messages:
+  reset: '&aSuccessfully&7 cleared your tag!'
+  applied:
+    - '&aSuccessfully&7 applied the {tag}&7 tag!'
+    - '&7Your new name: {user}'
+
+
+# ------------------------------------------------------------------------------ #
+# The tag reset item, customize this to your will.                               #
+#   name - The name of the item.                                                 #
+#   material - The id of the material that will be used as reset button.         #
+#   amount - How many times should the material be there, max is 64.             #
+#   lores - The item description lines, feel free to add some.                   #
+# ------------------------------------------------------------------------------ #
+reset:
+  name: '&4&lReset'
+  material: 166
+  amount: 1
+  lores:
+    - '&cReset your nickname to your username!'
+
+# ------------------------------------------------------------------------------ #
+# This section covers the permission message lore from every item.               #
+#   msg - The general lore message.                                              #
+#   allowed & denied - Replaces the `{perm}` in the 'msg' object!                #
+# ------------------------------------------------------------------------------ #
+perms:
+  msg: '&7Permission: {perm}'
+  allowed: '&a&lYES'
+  denied: '&c&lNO'
+
+# ------------------------------------------------------------------------------ #
+# This will be a list of tags, feel free to add as many as you want.             #
+# Make sure you have enough rows tho!                                            #
+#   name - The item its display name.                                            #
+#   material - The minecraft ID of your item!                                    #
+#   amount - How many times do you want your material to be there, max is 64.    #
+#   permission - The permission required to be able to use that tag.             #
+#   lores - The description of your tag, feel free to add as many as you wish.   #
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+# How to create a custom tag?                                                    #
+#   1. Add an item to the 'tags' list that is below this. You can name this how- #
+#      -ever you want, just make sure there are no symbols in it!                #
+#   2. Create the following items under your custom object.                      #
+#      Items: 'name', 'material', 'amount', 'permission', 'lores'                #
+#   3. Fill in the items according to the required object.                       #
+#                                                                                #
+# You should have something like this:                                           #
+# - example:                                                                     #
+#     name: 'My Custom Item'                                                     #
+#     material: 123                                                              #
+#     amount: 1                                                                  #
+#     permission: UC.Tags.Custom                                                 #
+#     lores:                                                                     #
+#       - '&7My Custom Item'                                                     #
+#       - '&7It's very &a&lEASY&7 to create!'                                    #
+# ------------------------------------------------------------------------------ #
+tags:
+  - diamond:
+      name: '&b&lDiamond'
+      material: 264
+      amount: 1
+      permission: UC.Tags.Diamond
+      lores:
+        - '&bFor the diamond legends!'
+  - golden:
+      name: "&6&lGold"
+      material: 266
+      amount: 1
+      permission: UC.Tags.Gold
+      lores:
+        - '&6For the golden legends!'
+  - iron:
+      name: "&f&lIron"
+      material: 265
+      amount: 1
+      permission: UC.Tags.Iron
+      lores:
+        - '&fFor the iron legends!'
+  - wakanda:
+      name: "&5&lWAKANDA FOREVA"
+      material: 421
+      amount: 1
+      permission: UC.Tags.Wakanda
+      lores:
+        - 'WAKANDA FOREVAAA!'
+        - 'Feel free to configure this in the config file!'

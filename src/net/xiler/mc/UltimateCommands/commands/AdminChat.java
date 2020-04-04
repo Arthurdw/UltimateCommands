@@ -20,7 +20,7 @@ public class AdminChat implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!plugin.getConfig().getBoolean("commands.adminchat.enabled")) return true;
+        if (!plugin.config.getBoolean("commands.adminchat.enabled")) return true;
 
         if (sender instanceof Player) {
             if (Perms.contains(plugin, (Player) sender, "commands.adminchat.permission")) return General.privateBroadcast(sender, plugin,"commands.adminchat.prefix", "commands.adminchat.permission", args);

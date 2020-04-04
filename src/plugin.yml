@@ -1,5 +1,5 @@
 name: UltimateCommands
-version: 0.0.6
+version: 0.0.7
 author: Arthurdw
 main: net.xiler.mc.UltimateCommands.Main
 description: The all in one command plugin aimed for controllability.
@@ -15,6 +15,10 @@ commands:
       - ucomm
       - ucommands
     description: Returns the help menu!
+  tag:
+    description: Show and select custon tags.
+    aliases:
+      - tags
   sc:
     aliases:
       - staff

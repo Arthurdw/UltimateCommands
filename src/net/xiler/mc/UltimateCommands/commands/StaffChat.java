@@ -20,7 +20,7 @@ public class StaffChat implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!plugin.getConfig().getBoolean("commands.staffchat.enabled")) return true;
+        if (!plugin.config.getBoolean("commands.staffchat.enabled")) return true;
 
         if (sender instanceof Player) {
             if (Perms.contains(plugin, (Player) sender, "commands.staffchat.permission")) return General.privateBroadcast(sender, plugin,"commands.staffchat.prefix", "commands.staffchat.permission", args);

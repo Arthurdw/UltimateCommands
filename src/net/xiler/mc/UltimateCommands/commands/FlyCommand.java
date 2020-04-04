@@ -11,7 +11,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class FlyCommand implements CommandExecutor {
 
@@ -24,21 +23,21 @@ public class FlyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!plugin.getConfig().getBoolean("commands.fly.enabled")) return true;
+        if (!plugin.config.getBoolean("commands.fly.enabled")) return true;
 
         Player p = General.getPlayer(sender, plugin, "commands.fly.permissions.others", args);
         if (p == null) return true;
 
         if (sender instanceof ConsoleCommandSender) {
-            fly(p, sender, plugin);
+            fly(p, sender);
             return false;
         }
 
-        if (Perms.contains(plugin, (Player) sender, "commands.fly.permissions.self")) fly(p, sender, plugin);
+        if (Perms.contains(plugin, (Player) sender, "commands.fly.permissions.self")) fly(p, sender);
         return false;
     }
 
-    private static void fly(Player p, CommandSender sender, Plugin plugin) {
+    private void fly(Player p, CommandSender sender) {
         String state = "enabled";
         if (p.getAllowFlight()) {
             p.setFlying(false);
@@ -49,6 +48,6 @@ public class FlyCommand implements CommandExecutor {
             p.setFlying(true);
         }
         if (sender != p) sender.sendMessage(Chat.send(plugin, p, "commands.fly.message").replace("{state}", ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("states." + state))));
-        p.sendMessage(Chat.send(plugin, p, "commands.fly.targetmsg").replace("{state}", ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("states." + state))).replace("{author}", sender.getName()));
+        p.sendMessage(Chat.send(plugin, p, "commands.fly.targetmsg").replace("{state}", ChatColor.translateAlternateColorCodes('&', plugin.config.getString("states." + state))).replace("{author}", sender.getName()));
     }
 }

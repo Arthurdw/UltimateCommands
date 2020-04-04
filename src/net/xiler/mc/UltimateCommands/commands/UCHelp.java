@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class UCHelp implements CommandExecutor {
 
@@ -20,14 +19,14 @@ public class UCHelp implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!plugin.getConfig().getBoolean("commands.help.enabled")) return true;
-        if (!(sender instanceof Player)) sendMenu(plugin, sender);
-        else if (Perms.contains(plugin, (Player) sender, "commands.help.permission")) sendMenu(plugin, sender);
+        if (!plugin.config.getBoolean("commands.help.enabled")) return true;
+        if (!(sender instanceof Player)) sendMenu(sender);
+        else if (Perms.contains(plugin, (Player) sender, "commands.help.permission")) sendMenu(sender);
         return false;
     }
 
-    private static void sendMenu(Plugin plugin, CommandSender sender) {
-        for (String msg : plugin.getConfig().getStringList("commands.help.messages")) {
+    private void sendMenu(CommandSender sender) {
+        for (String msg : plugin.config.getStringList("commands.help.messages")) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
         }
     }

@@ -18,7 +18,7 @@
 # \ \ what you're doing!                                                     \ \ #
 # | |                                                                        | | #
 # \ \=======================================================================/ /  #
-#  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/  #
+#  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/    #
 
 # ------------------------------------------------------------------------------ #
 # This is the prefix that will be send before every message.                     #
@@ -83,6 +83,7 @@ commands:
     messages:
       - '&e&lU&eltimate &6&lC&6ommands&7 - &cHELP'
       - '&7This help menu will give a brief summary of all commands included!'
+      - '&atag &2- &rOpen a GUI where you can select tags!'
       - '&abc &7(&cmessage&7) &2- &rBroadcast a message to your whole server!'
       - '&asc &7(&cmessage&7) &2- &rSend a private message to your staff members!'
       - '&aac &7(&cmessage&7) &2- &rSend a private message to your admins!'

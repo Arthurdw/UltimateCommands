@@ -16,10 +16,10 @@ public class AutoBroadcaster extends TimerTask {
     }
 
     public void run() {
-        String[] msg = plugin.getConfig().getStringList("autobroadcaster.messages." + ++selected + ".message").toArray(new String[0]);
+        String[] msg = plugin.config.getStringList("autobroadcaster.messages." + ++selected + ".message").toArray(new String[0]);
         if (msg.length == 0) {
             selected = 1;
-            msg = plugin.getConfig().getStringList("autobroadcaster.messages.1.message").toArray(new String[0]);
+            msg = plugin.config.getStringList("autobroadcaster.messages.1.message").toArray(new String[0]);
         }
         for (String item : msg) Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', item));
     }
